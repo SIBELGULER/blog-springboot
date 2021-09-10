@@ -4,6 +4,7 @@ package com.example.blog.blog;
 import com.example.blog.etiket.Etiket;
 import com.example.blog.kategori.Kategori;
 import com.example.blog.ortak.BaseEntity;
+import com.example.blog.resim.Resim;
 import com.example.blog.yorum.Yorum;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,9 @@ public class Blog extends BaseEntity {
 
     @ManyToMany(mappedBy = "blogs")
     private List<Etiket> etiketler;
+
+    @OneToMany(mappedBy = "blog")
+    private List<Resim> resimler;
 
 }
 
