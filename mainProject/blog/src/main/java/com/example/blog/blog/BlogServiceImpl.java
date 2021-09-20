@@ -60,9 +60,8 @@ public class BlogServiceImpl implements IBlogService {
 
     @Override
     @Transactional(readOnly = true)
-    public BlogDTO findALLById(Long id) {
-
-        return modelMapper.map(blogRepo.getOne(id), BlogDTO.class);
+    public Blog findALLById(Long id) {
+        return blogRepo.getOne(id);
     }
 
 
