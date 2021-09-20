@@ -17,14 +17,12 @@ import javax.validation.constraints.NotNull;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "yorumSequence", allocationSize = 1)
+@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "resimSequence", allocationSize = 1)
 public class Resim extends BaseEntity {
     @NotNull
     private String ad;
     @NotNull
     private String link;
-
-
     @ManyToOne
     private Blog blog;
 }

@@ -15,5 +15,5 @@ import java.util.List;
 public class KategoriDTO extends BaseDTO {
     private String ad;
 
-    private List<Blog> blogs;
+    private List<Blog> bloglar;
 }

@@ -1,5 +1,4 @@
 package com.example.blog.kategori;
-import com.example.blog.etiket.EtiketDTO;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-@Service
+@Service(value = "kategori")
 public class KategoriServiceImpl implements IKategoriService {
     private IKategoriRepo kategoriRepo;
     private ModelMapper modelMapper;
@@ -33,13 +32,12 @@ public class KategoriServiceImpl implements IKategoriService {
         kategori.setAd(kategoriDTO.getAd());
         return modelMapper.map(kategoriRepo.save(kategori), KategoriDTO.class);
 
-        /*Kategori kategori = kategoriRepo.save(modelMapper.map(kategoriDTO, Kategori.class));
-        return modelMapper.map(kategori, KategoriDTO.class);*/
 
     }
 
     @Override
-    public String sil(Long id) throws Exception {
+    @Transactional(rollbackFor = Exception.class)
+    public String sil(Long id){
         kategoriRepo.deleteById(id);
         if (kategoriRepo.getOne(id) == null) {
 
@@ -57,11 +55,13 @@ public class KategoriServiceImpl implements IKategoriService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public KategoriDTO findAllById(Long id) {
         return modelMapper.map(kategoriRepo.getOne(id), KategoriDTO.class);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String deleteAll() {
         kategoriRepo.deleteAll();
         return "tüm kayıtlar silindi.";

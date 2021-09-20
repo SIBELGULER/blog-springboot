@@ -14,38 +14,50 @@ public class BlogController {
     }
 
     @RequestMapping(value = "/kaydet",method = RequestMethod.POST)
-    public BlogDTO kaydet(@RequestBody BlogDTO blogDTO) throws Exception {
-        return blogService.kaydet(blogDTO);
+    public BaseResponse kaydet(@RequestBody BlogDTO blogDTO){
+        try {
+            return Util.islemSonucGetir(blogService.kaydet(blogDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }
     }
 
     @RequestMapping(value = "/duzenle",method = RequestMethod.PUT)
-    public BlogDTO duzenle(@RequestBody BlogDTO blogDTO) throws Exception {
-        return blogService.duzenle(blogDTO);
+    public BaseResponse duzenle(@RequestBody BlogDTO blogDTO){
+        try {
+            return Util.islemSonucGetir(blogService.duzenle(blogDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }
     }
 
     @RequestMapping(value = "/sil/{id}",method = RequestMethod.DELETE)
-    public String sil(@PathVariable Long id) throws Exception {
-        return blogService.sil(id);
+    public BaseResponse sil(@PathVariable Long id){
+        try {
+            return Util.islemSonucGetir(blogService.sil(id));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }
     }
     @RequestMapping(value = "/tumunu-getir", method = RequestMethod.GET)
     public BaseResponse tumunuGetir() {
         try {
             return Util.islemSonucGetir(blogService.findAll());
-        } catch (Exception ex) {
-            return Util.islemSonucGetir(ex);
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
         }
     }
     @RequestMapping(value = "/tumunu-sil", method = RequestMethod.DELETE)
     public BaseResponse tumunuSil() {
         try {
             return Util.islemSonucGetir(blogService.deleteAll());
-        } catch (Exception ex) {
-            return Util.islemSonucGetir(ex);
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
         }
     }
 
-    @RequestMapping(value = "/bul/{id}", method = RequestMethod.GET)
-    public BaseResponse bul(@PathVariable Long id){
+    @RequestMapping(value = "/getir/{id}", method = RequestMethod.GET)
+    public BaseResponse getir(@PathVariable Long id){
         try{
             return Util.islemSonucGetir(blogService.findALLById(id));
         }catch (Exception e){

@@ -22,9 +22,9 @@ import java.util.List;
 public class Etiket extends BaseEntity {
 
     @NotNull
-    private String adi;
+    private String ad;
 
     @ManyToMany
-    private List<Blog> blogs;
+    private List<Blog> blog;
 
 }

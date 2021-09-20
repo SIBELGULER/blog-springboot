@@ -13,4 +13,6 @@ public interface IYorumService {
     List<YorumDTO> findAll();
     YorumDTO findAllById(Long id);
     String deleteAll();
+    List<YorumDTO> findByBlogId(Long id);
+
 }

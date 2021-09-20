@@ -1,14 +1,12 @@
 package com.example.blog.blog;
 
-import com.example.blog.etiket.EtiketDTO;
-import com.example.blog.kategori.Kategori;
-import com.example.blog.kategori.KategoriDTO;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -25,16 +23,11 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public BlogDTO kaydet(BlogDTO blogDTO) throws Exception {
-        try {
-            if (blogRepo.findByBaslik(blogDTO.getBaslik()) != null) {
-                throw new Exception("Bu ad ile daha önce bir başlık kaydedilmiştir. Başka başlık gir.");
-            }
-            blogRepo.save(modelMapper.map(blogDTO, Blog.class)); // Parametre ile gelen ders veri tabanına kayıt ediliyor.
-            return modelMapper.map(blogRepo.findByBaslik(blogDTO.getBaslik()), BlogDTO.class); // Kayıt edilen dersi veri tabanından çekip DTO ya mapliyoruz.
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        }
+    @Transactional(rollbackFor = Exception.class)
+    public BlogDTO kaydet(BlogDTO blogDTO) {
+        Blog blog = modelMapper.map(blogDTO, Blog.class);
+        blog.setTarih(Calendar.getInstance());
+        return modelMapper.map(blogRepo.save(blog), BlogDTO.class);
     }
 
     @Override
@@ -48,10 +41,11 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public String sil(Long id) throws Exception {
+    @Transactional(rollbackFor = Exception.class)
+    public String sil(Long id) {
         blogRepo.deleteById(id);
         if (blogRepo.getOne(id) == null) {
-            return "Başarılı bir şekilde silinmiştir.";
+            return "Silme işlemi başarılı.";
         } else {
             return "Silme işlemi başarısız.";
         }
@@ -65,15 +59,18 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public BlogDTO findALLById(Long id) {
+
         return modelMapper.map(blogRepo.getOne(id), BlogDTO.class);
     }
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String deleteAll() {
         blogRepo.deleteAll();
-        return "tüm kayıtlar silindi.";
+        return "Tüm kayıtlar silindi.";
     }
 
 }

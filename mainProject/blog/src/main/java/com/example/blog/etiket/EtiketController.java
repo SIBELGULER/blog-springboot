@@ -14,19 +14,28 @@ public class EtiketController {
     }
 
     @RequestMapping(value = "/kaydet",method = RequestMethod.POST)
-    public EtiketDTO kaydet(@RequestBody EtiketDTO etiketDTO) throws Exception {
-        return etiketService.kaydet(etiketDTO);
-    }
+    public BaseResponse kaydet(@RequestBody EtiketDTO etiketDTO){
+        try {
+            return Util.islemSonucGetir(etiketService.kaydet(etiketDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
 
     @RequestMapping(value = "/duzenle",method = RequestMethod.PUT)
-    public EtiketDTO duzenle(@RequestBody EtiketDTO etiketDTO) throws Exception {
-        return etiketService.duzenle(etiketDTO);
-    }
+    public BaseResponse duzenle(@RequestBody EtiketDTO etiketDTO) throws Exception {
+        try {
+            return Util.islemSonucGetir(etiketService.duzenle(etiketDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
 
     @RequestMapping(value = "/sil/{id}",method = RequestMethod.DELETE)
-    public String sil(@PathVariable Long id) throws Exception {
-        return etiketService.sil(id);
-    }
+    public BaseResponse sil(@PathVariable Long id) throws Exception {
+        try {
+            return Util.islemSonucGetir(etiketService.sil(id));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
     @RequestMapping(value = "/tumunu-getir", method = RequestMethod.GET)
     public BaseResponse tumunuGetir() {
         try {
@@ -44,8 +53,8 @@ public class EtiketController {
         }
     }
 
-    @RequestMapping(value = "/bul/{id}", method = RequestMethod.GET)
-    public BaseResponse bul(@PathVariable Long id){
+    @RequestMapping(value = "/getir/{id}", method = RequestMethod.GET)
+    public BaseResponse getir(@PathVariable Long id){
         try{
             return Util.islemSonucGetir(etiketService.findAllById(id));
         }catch (Exception e){

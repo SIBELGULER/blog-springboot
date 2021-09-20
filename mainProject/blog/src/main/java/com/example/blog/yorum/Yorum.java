@@ -18,10 +18,12 @@ import java.util.Calendar;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "yorumSequence",allocationSize = 1)
+@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "yorumSequence", allocationSize = 1)
 public class Yorum extends BaseEntity {
     @NotNull
-    private String adsoyad;
+    private String ad;
+    @NotNull
+    private String soyad;
     @NotNull
     private String icerik;
     @NotNull

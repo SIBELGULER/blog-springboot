@@ -37,10 +37,10 @@ public class Blog extends BaseEntity {
     @OneToMany(mappedBy = "blog")
     private List<Yorum> yorumlar;
 
-    @ManyToMany(mappedBy = "blogs")
+    @ManyToMany(mappedBy = "bloglar")
     private List<Kategori> kategoriler;
 
-    @ManyToMany(mappedBy = "blogs")
+    @ManyToMany(mappedBy = "blog")
     private List<Etiket> etiketler;
 
     @OneToMany(mappedBy = "blog")

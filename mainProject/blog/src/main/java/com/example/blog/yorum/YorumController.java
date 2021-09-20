@@ -1,9 +1,9 @@
 package com.example.blog.yorum;
 
-import com.example.blog.blog.BlogDTO;
-import com.example.blog.blog.IBlogService;
+import com.example.blog.blog.BlogGetirDTO;
 import com.example.blog.ortak.BaseResponse;
 import com.example.blog.ortak.Util;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,26 +17,35 @@ public class YorumController {
     }
 
     @RequestMapping(value = "/kaydet", method = RequestMethod.POST)
-    public YorumDTO kaydet(@RequestBody YorumDTO yorumDTO) throws Exception {
-        return yorumService.kaydet(yorumDTO);
-    }
+    public BaseResponse kaydet(@RequestBody YorumDTO yorumDTO){
+        try {
+            return Util.islemSonucGetir(yorumService.kaydet(yorumDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
 
     @RequestMapping(value = "/duzenle", method = RequestMethod.PUT)
-    public YorumDTO duzenle(@RequestBody YorumDTO yorumDTO) throws Exception {
-        return yorumService.duzenle(yorumDTO);
-    }
+    public BaseResponse duzenle(@RequestBody YorumDTO yorumDTO){
+        try {
+            return Util.islemSonucGetir(yorumService.duzenle(yorumDTO));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
 
     @RequestMapping(value = "/sil/{id}", method = RequestMethod.DELETE)
-    public String sil(@PathVariable Long id) throws Exception {
-        return yorumService.sil(id);
-    }
+    public BaseResponse sil(@PathVariable Long id) throws Exception {
+        try {
+            return Util.islemSonucGetir(yorumService.sil(id));
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
+        }    }
 
     @RequestMapping(value = "/tumunu-getir", method = RequestMethod.GET)
     public BaseResponse tumunuGetir() {
         try {
             return Util.islemSonucGetir(yorumService.findAll());
-        } catch (Exception ex) {
-            return Util.islemSonucGetir(ex);
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
         }
     }
 
@@ -44,16 +53,24 @@ public class YorumController {
     public BaseResponse tumunuSil() {
         try {
             return Util.islemSonucGetir(yorumService.deleteAll());
-        } catch (Exception ex) {
-            return Util.islemSonucGetir(ex);
+        } catch (Exception e) {
+            return Util.islemSonucGetir(e);
         }
     }
 
-    @RequestMapping(value = "/bul/{id}", method = RequestMethod.GET)
-    public BaseResponse bul(@PathVariable Long id){
+    @RequestMapping(value = "/getir/{id}", method = RequestMethod.GET)
+    public BaseResponse getir(@PathVariable Long id){
         try{
             return Util.islemSonucGetir(yorumService.findAllById(id));
         }catch (Exception e){
+            return Util.islemSonucGetir(e);
+        }
+    }
+    @RequestMapping(value = "/blog-id-ye-gore-getir", method = RequestMethod.POST)
+    public BaseResponse blogIdyeGoreGetir(@RequestBody BlogGetirDTO blogDTO) {
+        try {
+            return Util.islemSonucGetir(yorumService.findByBlogId(blogDTO.getId()));
+        } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }
     }

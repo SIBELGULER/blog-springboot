@@ -24,6 +24,6 @@ public class Kategori extends BaseEntity {
     private String ad;
 
     @ManyToMany
-    private List<Blog> blogs;
+    private List<Blog> bloglar;
 
 }

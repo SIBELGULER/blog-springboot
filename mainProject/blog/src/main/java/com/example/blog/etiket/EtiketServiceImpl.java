@@ -1,6 +1,5 @@
 package com.example.blog.etiket;
-import com.example.blog.kategori.Kategori;
-import com.example.blog.kategori.KategoriDTO;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +29,15 @@ public class EtiketServiceImpl implements IEtiketService {
     @Transactional(rollbackFor = Exception.class)
     public EtiketDTO duzenle(EtiketDTO etiketDTO) {
         Etiket etiket = etiketRepo.getOne(etiketDTO.getId());
-        etiket.setAdi(etiketDTO.getAdi());
+        etiket.setAd(etiketDTO.getAd());
+
         return modelMapper.map(etiketRepo.save(etiket), EtiketDTO.class);
 
     }
 
     @Override
-    public String sil(Long id) throws Exception {
+    @Transactional(rollbackFor = Exception.class)
+    public String sil(Long id) {
         etiketRepo.deleteById(id);
         if (etiketRepo.getOne(id) == null) {
 
@@ -55,12 +56,13 @@ public class EtiketServiceImpl implements IEtiketService {
 
     @Override
     public EtiketDTO findAllById(Long id) {
-        return modelMapper.map(etiketRepo.getOne(id),EtiketDTO.class);
+
+        return modelMapper.map(etiketRepo.getOne(id), EtiketDTO.class);
     }
 
     @Override
     public String deleteAll() {
         etiketRepo.deleteAll();
-        return "tüm kayıtlar silindi.";
+        return "Tüm kayıtlar silindi.";
     }
 }
