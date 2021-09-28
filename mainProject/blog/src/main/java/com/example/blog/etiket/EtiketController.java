@@ -1,7 +1,12 @@
 package com.example.blog.etiket;
 
+import com.example.blog.blog.BlogDTO;
 import com.example.blog.ortak.BaseResponse;
 import com.example.blog.ortak.Util;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -12,6 +17,78 @@ public class EtiketController {
     public EtiketController(IEtiketService etiketService) {
         this.etiketService=etiketService;
     }
+    @Operation(summary = "Etiket Kaydet",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket kaydetme işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\","+
+                                                    "\"message\": \"Başarılı.\","+
+                                                    "\"path\": \"/api/etiket/kaydet\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket kaydetme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\","+
+                                                    "\"message\": \"Unauthorized.\"," +
+                                                    "\"path\": \"/api/etiket/kaydet\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket kaydetme işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\"," +
+                                                    "\"message\": \"Forbidden.\"," +
+                                                    "\"path\": \"/api/etiket/kaydet\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket kaydetme işleminde sayfanın bulunamadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/kaydet\","+
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket kaydetme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\","+
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/kaydet\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
 
     @RequestMapping(value = "/kaydet",method = RequestMethod.POST)
     public BaseResponse kaydet(@RequestBody EtiketDTO etiketDTO){
@@ -20,6 +97,78 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
+    @Operation(summary = "Etiket Düzenle",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket düzenle işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\"," +
+                                                    "\"message\": \"Başarılı.\"," +
+                                                    "\"path\": \"/api/etiket/duzenle\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket düzenle işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\"," +
+                                                    "\"message\": \"Unauthorized.\"," +
+                                                    "\"path\": \"/api/etiket/duzenle\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket düzenle işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\"," +
+                                                    "\"message\": \"Forbidden.\"," +
+                                                    "\"path\": \"/api/etiket/duzenle\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket düzenle işleminde sayfanın bulunamadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/duzenle\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Etiket düzenle işleminde özel bir surumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\"," +
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/duzenle\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
 
     @RequestMapping(value = "/duzenle",method = RequestMethod.PUT)
     public BaseResponse duzenle(@RequestBody EtiketDTO etiketDTO) throws Exception {
@@ -28,6 +177,78 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
+    @Operation(summary = "Etiket Sil(id)",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket silme işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\","  +
+                                                    "\"message\": \"Başarılı.\"," +
+                                                    "\"path\": \"/api/etiket/sil/{id}\","  +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\"," +
+                                                    "\"message\": \"Unauthorized.\"," +
+                                                    "\"path\": \"/api/etiket/sil/{id}\","  +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket silme işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\"," +
+                                                    "\"message\": \"Forbidden.\"," +
+                                                    "\"path\": \"/api/etiket/sil/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre silme işleminde sayfanın bulunamadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/sil/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\"," +
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/sil/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
 
     @RequestMapping(value = "/sil/{id}",method = RequestMethod.DELETE)
     public BaseResponse sil(@PathVariable Long id) throws Exception {
@@ -36,6 +257,79 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
+    @Operation(summary = "Tüm Etiketleri Getir",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri getirme işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\"," +
+                                                    "\"message\": \"Başarılı.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-getir\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\"," +
+                                                    "\"message\": \"Unauthorized.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-getir\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri getirme işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\"," +
+                                                    "\"message\": \"Forbidden.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-getir\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri getirme işleminde sayfanın bulunamadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-getir\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\","+
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-getir\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
+
     @RequestMapping(value = "/tumunu-getir", method = RequestMethod.GET)
     public BaseResponse tumunuGetir() {
         try {
@@ -44,6 +338,79 @@ public class EtiketController {
             return Util.islemSonucGetir(ex);
         }
     }
+    @Operation(summary = "Tüm Etiketleri Sil",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri silme işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\"," +
+                                                    "\"message\": \"Başarılı.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-sil\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\"," +
+                                                    "\"message\": \"Unauthorized.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-sil\","  +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri silme işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\","  +
+                                                    "\"message\": \"Forbidden.\","  +
+                                                    "\"path\": \"/api/etiket/tumunu-sil\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri silme işleminde sayfanın bulunamadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-sil\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "Tüm etiketleri silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\","+
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/tumunu-sil\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
+
     @RequestMapping(value = "/tumunu-sil", method = RequestMethod.DELETE)
     public BaseResponse tumunuSil() {
         try {
@@ -52,6 +419,78 @@ public class EtiketController {
             return Util.islemSonucGetir(ex);
         }
     }
+    @Operation(summary = "Etiket Getir(id)",description = "")
+    @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket getirme işleminin başarılı olduğunu bildirir.",
+                                            value = "{\"status\": \"200\"," +
+                                                    "\"message\": \"Başarılı.\"," +
+                                                    "\"path\": \"/api/etiket/getir/{id}\","  +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "401", description = "Unauthorized",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            value = "{\"status\": \"401\"," +
+                                                    "\"message\": \"Unauthorized.\","  +
+                                                    "\"path\": \"/api/etiket/getir/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "403", description = "Forbidden",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket getirme işleminin yasaklı olduğunu bildirir.",
+                                            value = "{\"status\": \"403\"," +
+                                                    "\"message\": \"Forbidden.\"," +
+                                                    "\"path\": \"/api/etiket/getir/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Not Found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket getirme işleminde sayfanın bulunmadığını bildirir.",
+                                            value = "{\"status\": \"404\"," +
+                                                    "\"message\": \"Not Found.\"," +
+                                                    "\"path\": \"/api/etiket/getir/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+
+                    }),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "405", description = "Validation exception",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = BlogDTO.class),
+                                    examples= @ExampleObject(
+                                            name = "İd'ye göre etiket getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            value = "{\"status\": \"405\"," +
+                                                    "\"message\": \"Validation exception.\"," +
+                                                    "\"path\": \"/api/etiket/getir/{id}\"," +
+                                                    "\"timestamp\": \"21.09.2021\"}"
+                                    )
+                            )
+                    })
+    })
 
     @RequestMapping(value = "/getir/{id}", method = RequestMethod.GET)
     public BaseResponse getir(@PathVariable Long id){
