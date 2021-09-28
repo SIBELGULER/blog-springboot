@@ -18,7 +18,7 @@ public class KategoriController {
     public KategoriController(IKategoriService kategoriService) {
         this.kategoriService = kategoriService;
     }
-    @Operation(summary = "Kategori Kaydet",description = "")
+    @Operation(summary = "Kategori Kaydet",description = "Kaydetme işleminde herhangi bir hata meydana gelmemişse kategori kaydedilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -95,7 +95,7 @@ public class KategoriController {
     public KategoriDTO kaydet(@RequestBody KategoriDTO kategoriDTO) throws Exception {
         return kategoriService.kaydet(kategoriDTO);
     }
-    @Operation(summary = "Kategori Düzenle",description = "")
+    @Operation(summary = "Kategori Düzenle",description = "Düzenleme işleminde herhangi bir hata meydana gelmemişse kategori düzenlenir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -172,14 +172,14 @@ public class KategoriController {
     public KategoriDTO duzenle(@RequestBody KategoriDTO kategoriDTO) throws Exception {
         return kategoriService.duzenle(kategoriDTO);
     }
-    @Operation(summary = "Kategori Sil(id)",description = "")
+    @Operation(summary = "Id'ye Göre Kategori Sil",description = "Id'ye göre silme işleminde herhangi bir hata meydana gelmemişse id'ye göre kategori silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori silme  işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre kategori silme  işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/kategori/sil/{id}\"," +
@@ -193,7 +193,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre kategori silme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/kategori/sil/{id}\"," +
@@ -207,7 +207,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori silme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre kategori silme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/kategori/sil/{id}\"," +
@@ -221,7 +221,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori silme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre kategori silme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/kategori/sil/{id}\"," +
@@ -235,7 +235,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre kategori silme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/kategori/sil/{id}\"," +
@@ -249,7 +249,7 @@ public class KategoriController {
     public String sil(@PathVariable Long id) throws Exception {
         return kategoriService.sil(id);
     }
-    @Operation(summary = "Tüm Kategorileri Getir",description = "")
+    @Operation(summary = "Tüm Kategorileri Getir",description = "Tüm kategorileri getir işleminde herhangi bir hata meydana gelmemişse tüm kategoriler getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -330,7 +330,7 @@ public class KategoriController {
             return Util.islemSonucGetir(ex);
         }
     }
-    @Operation(summary = "Tüm Kategorileri Sil",description = "")
+    @Operation(summary = "Tüm Kategorileri Sil",description = "Tüm kategorileri sil işleminde herhangi bir hata meydana gelmemişse tüm kategoriler silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -411,14 +411,14 @@ public class KategoriController {
             return Util.islemSonucGetir(ex);
         }
     }
-    @Operation(summary = "Kategori Getir(id)",description = "")
+    @Operation(summary = "Id'ye Göre Kategori Getir",description = "Id'ye göre getirme işleminde herhangi bir hata meydana gelmemişse id'ye göre kategori getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori getirme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre kategori getirme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/kategori/bul/{id}\"," +
@@ -432,7 +432,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori bulma işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre kategori bulma işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/kategori/bul/{id}\"," +
@@ -446,7 +446,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori bulma işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre kategori bulma işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/kategori/bul/{id}\"," +
@@ -460,7 +460,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori bulma işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre kategori bulma işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/kategori/bul/{id}\"," +
@@ -474,7 +474,7 @@ public class KategoriController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre kategori bulma işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre kategori bulma işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/kategori/bul/{id}\"," +

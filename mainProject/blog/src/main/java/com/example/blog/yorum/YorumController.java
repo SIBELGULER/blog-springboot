@@ -20,7 +20,7 @@ public class YorumController {
         this.yorumService = yorumService;
     }
 
-    @Operation(summary = "Yorum Kaydet", description = "")
+    @Operation(summary = "Yorum Kaydet", description = "Kaydetme işleminde herhangi bir hata meydana gelmezse yorum kaydedilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -104,7 +104,7 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Yorum Duzenle", description = "")
+    @Operation(summary = "Yorum Düzenle", description = "Düzenleme işleminde herhangi bir hata meydana gelmemişse yorum düzenlenir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -187,14 +187,14 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Yorum Sil(id)", description = "")
+    @Operation(summary = "Id'ye Göre Yorum Silme", description = "Id'ye göre yorum silme işleminde herhangi bir hata meydana gelmemişse id'ye göre yorum silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum silme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre yorum silme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/yorum/sil/{id}\"," +
@@ -208,7 +208,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre yorum silme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/yorum/sil/{id}\"," +
@@ -222,7 +222,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum silme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre yorum silme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/yorum/sil/{id}\"," +
@@ -236,7 +236,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum silme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre yorum silme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/yorum/sil/{id}\"," +
@@ -250,7 +250,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre yorum silme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/yorum/sil/{id}\"," +
@@ -270,7 +270,7 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Tüm Yorumları Getir", description = "")
+    @Operation(summary = "Tüm Yorumları Getir", description = "Tüm yorumları getirme işleminde herhangi bir hata meydana gelmemişse tüm yorumlar getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -353,7 +353,7 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Tüm Yorumları Sil", description = "")
+    @Operation(summary = "Tüm Yorumları Sil", description = "Tüm yorumları silme işleminde herhangi bir hata meydana gelmemişse tüm yorumlar silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -436,14 +436,14 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Yorum Getir(id)", description = "")
+    @Operation(summary = "Id'ye Göre Yorum Getir", description = "Id'ye göre yorum getirme işleminde herhangi bir hata meydana gelmemişse id'ye göre yorum getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum getirme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre yorum getirme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/yorum/getir/{id}\"," +
@@ -457,7 +457,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre yorum getirme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/yorum/getir/{id}\"," +
@@ -471,7 +471,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum getirme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre yorum getirme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/yorum/getir/{id}\"," +
@@ -485,7 +485,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum getirme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre yorum getirme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/yorum/getir/{id}\"," +
@@ -499,7 +499,7 @@ public class YorumController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre yorum getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre yorum getirme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/yorum/getir/{id}\"," +
@@ -519,7 +519,7 @@ public class YorumController {
         }
     }
 
-    @Operation(summary = "Blog Id'ye Göre Yorum Getir", description = "")
+    @Operation(summary = "Blog Id'ye Göre Yorum Getir", description = "Blog id'ye göre yorum getirme işleminde herhangi bir hata meydana gelmemişse blog id'ye göre yorum getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {

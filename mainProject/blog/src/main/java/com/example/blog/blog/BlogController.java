@@ -19,7 +19,7 @@ public class BlogController {
     }
 
 
-    @Operation(summary = "Blog Kaydet",description = "")
+    @Operation(summary = "Blog Kaydet",description = "Kaydetme işleminde herhangi bir hata meydana gelmezse blog kaydedilir.")
             @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
                     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -101,7 +101,7 @@ public class BlogController {
         }
     }
 
-    @Operation(summary = "Blog Düzenle",description = "")
+    @Operation(summary = "Blog Düzenle",description = "Düzenleme işleminde herhangi bir hata meydana gelmezse blog düzenlenir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -185,14 +185,14 @@ public class BlogController {
         }
     }
 
-    @Operation(summary = "Blog Sil(id)",description = "")
+    @Operation(summary = "Id'ye Göre Blog Sil",description = "Id'ye göre silme işleminde herhangi bir hata meydana gelmezse id'ye göre blog silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog silme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre blog silme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\","+
                                                     "\"message\": \"Başarılı.\","+
                                                     "\"path\": \"/api/blog/sil/{id}\"," +
@@ -206,7 +206,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre blog silme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/blog/sil/{id}\"," +
@@ -220,7 +220,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog silme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre blog silme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\","+
                                                     "\"path\": \"/api/blog/sil/{id}\","+
@@ -234,7 +234,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog silme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre blog silme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/blog/sil/{id}\"," +
@@ -248,7 +248,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre blog silme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\","+
                                                     "\"message\": \"Validation exception.\","+
                                                     "\"path\": \"/api/blog/sil/{id}\"," +
@@ -267,7 +267,7 @@ public class BlogController {
         }
     }
 
-    @Operation(summary = "Tüm Blogları Getir",description = "")
+    @Operation(summary = "Tüm Blogları Getir",description = "Tümünü getir işleminde harhangi bir hata meydana gelmezse tüm bloglar getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -349,7 +349,7 @@ public class BlogController {
         }
     }
 
-    @Operation(summary = "Tüm Blogları Sil",description = "")
+    @Operation(summary = "Tüm Blogları Sil",description = "Tümünü sil işleminde herhangi bir hata meydana gelmezse tüm bloglar silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -431,14 +431,14 @@ public class BlogController {
         }
     }
 
-    @Operation(summary = "Blog Getir(id",description = "")
+    @Operation(summary = "Id'ye Göre Blog Getir",description = "Id'ye göre getirme işleminde herhangi bir hata meydana gelmezse tüm bloglar getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog getirme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre blog getirme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\","+
                                                     "\"path\": \"/api/blog/getir/{id}\"," +
@@ -452,7 +452,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre blog getirme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\","  +
                                                     "\"message\": \"Unauthorized.\","  +
                                                     "\"path\": \"/api/blog/getir/{id}\"," +
@@ -466,7 +466,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog getirme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre blog getirme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/blog/getir/{id}\"," +
@@ -480,7 +480,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog getirme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre blog getirme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/blog/getir/{id}\"," +
@@ -494,7 +494,7 @@ public class BlogController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre blog getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre blog getirme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\","  +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/blog/getir/{id}\","  +

@@ -18,7 +18,7 @@ public class ResimController {
         this.iResimService = iResimService;
     }
 
-    @Operation(summary = "Resim Kaydet", description = "")
+    @Operation(summary = "Resim Kaydet", description = "Resim kaydetme işleminde herhangi bir hata meydana gelmemişse resim kaydedilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -100,14 +100,14 @@ public class ResimController {
         }
     }
 
-    @Operation(summary = "Resim Sil(id)", description = "")
+    @Operation(summary = "Id'ye Göre Resim Sil", description = "Id'ye göre resim silme işleminde herhangi bir hata meydana gelmemişse id'ye göre resim silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim silme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre resim silme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/resim/sil/{id}\"," +
@@ -121,7 +121,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre resim silme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/resim/sil/{id}\"," +
@@ -135,7 +135,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim silme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre resim silme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/resim/sil/{id}\"," +
@@ -149,7 +149,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim silme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre resim silme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/resim/sil/{id}\"," +
@@ -163,7 +163,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre resim silme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/resim/sil/{id}\"," +
@@ -182,7 +182,7 @@ public class ResimController {
         }
     }
 
-    @Operation(summary = "Tüm Resimleri Sil", description = "")
+    @Operation(summary = "Tüm Resimleri Sil", description = "Tüm resimleri silme işleminde herhangi bir hata meydana gelmemişse tüm resimler silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -264,7 +264,7 @@ public class ResimController {
         }
     }
 
-    @Operation(summary = "Resim Düzenle", description = "")
+    @Operation(summary = "Resim Düzenle", description = "Resim düzenle işleminde herhangi bir hata meydana gelmemişse resim düzenlenir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -346,7 +346,7 @@ public class ResimController {
         }
     }
 
-    @Operation(summary = "Tüm Resimleri Getir", description = "")
+    @Operation(summary = "Tüm Resimleri Getir", description = "Tüm resimleri getirme işleminde herhangi bir hata meydana gelmemişse tüm resimler getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -428,14 +428,14 @@ public class ResimController {
         }
     }
 
-    @Operation(summary = "Resim Getir(id)", description = "")
+    @Operation(summary = "Id'ye Göre Resim Getir", description = "Id'ye göre resim getirme işleminde herhangi bir hata meydana gelmemişse id'ye göre resim getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim getirme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre resim getirme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/resim/getir/{id}\"," +
@@ -449,7 +449,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre resim getirme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/resim/getir/{id}\"," +
@@ -463,7 +463,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim getirme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre resim getirme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/resim/getir/{id}\"," +
@@ -477,7 +477,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim getirme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre resim getirme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/resim/getir/{id}\"," +
@@ -491,7 +491,7 @@ public class ResimController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples = @ExampleObject(
-                                            name = "İd'ye göre resim getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre resim getirme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/resim/getir/{id}\"," +

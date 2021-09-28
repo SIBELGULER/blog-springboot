@@ -17,7 +17,7 @@ public class EtiketController {
     public EtiketController(IEtiketService etiketService) {
         this.etiketService=etiketService;
     }
-    @Operation(summary = "Etiket Kaydet",description = "")
+    @Operation(summary = "Etiket Kaydet",description = "Kaydetme işleminde harhangi bir hata meydana gelmemişse etiket kaydedilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -97,7 +97,7 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
-    @Operation(summary = "Etiket Düzenle",description = "")
+    @Operation(summary = "Etiket Düzenle",description = "Düzenleme işleminde herhangi bir hata meydana gelmemişse etiket düzenlenir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -177,14 +177,14 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
-    @Operation(summary = "Etiket Sil(id)",description = "")
+    @Operation(summary = "Id'ye Göre Etiket Sil",description = "Id'ye göre silme işleminde herhangi bir hata meydana gelmemişse id'ye göre etiket silinir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket silme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre etiket silme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\","  +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/etiket/sil/{id}\","  +
@@ -198,7 +198,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre silme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre silme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\"," +
                                                     "\"path\": \"/api/etiket/sil/{id}\","  +
@@ -212,7 +212,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket silme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre etiket silme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/etiket/sil/{id}\"," +
@@ -226,7 +226,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre silme işleminde sayfanın bulunamadığını bildirir.",
+                                            name = "Id'ye göre silme işleminde sayfanın bulunamadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/etiket/sil/{id}\"," +
@@ -240,7 +240,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket silme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre etiket silme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/etiket/sil/{id}\"," +
@@ -257,7 +257,7 @@ public class EtiketController {
         } catch (Exception e) {
             return Util.islemSonucGetir(e);
         }    }
-    @Operation(summary = "Tüm Etiketleri Getir",description = "")
+    @Operation(summary = "Tüm Etiketleri Getir",description = "Tümünü getir işleminde herhangi bir hata meydana gelmezse tüm etiketleri getirir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -338,7 +338,7 @@ public class EtiketController {
             return Util.islemSonucGetir(ex);
         }
     }
-    @Operation(summary = "Tüm Etiketleri Sil",description = "")
+    @Operation(summary = "Tüm Etiketleri Sil",description = "Tümünü sil işleminde herhangi bir hata meydana gelmezse tüm etiketleri siler.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
@@ -419,14 +419,14 @@ public class EtiketController {
             return Util.islemSonucGetir(ex);
         }
     }
-    @Operation(summary = "Etiket Getir(id)",description = "")
+    @Operation(summary = "Id'ye Göre Etiket Getir",description = "Id'ye göre getirme işleminde herhangi bir hata meydana gelmezse id'ye göre etiket getirilir.")
     @io.swagger.v3.oas.annotations.responses.ApiResponses(value={
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "successful operation",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket getirme işleminin başarılı olduğunu bildirir.",
+                                            name = "Id'ye göre etiket getirme işleminin başarılı olduğunu bildirir.",
                                             value = "{\"status\": \"200\"," +
                                                     "\"message\": \"Başarılı.\"," +
                                                     "\"path\": \"/api/etiket/getir/{id}\","  +
@@ -440,7 +440,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket getirme işleminde yetkisiz erişim olduğunu bildirir.",
+                                            name = "Id'ye göre etiket getirme işleminde yetkisiz erişim olduğunu bildirir.",
                                             value = "{\"status\": \"401\"," +
                                                     "\"message\": \"Unauthorized.\","  +
                                                     "\"path\": \"/api/etiket/getir/{id}\"," +
@@ -454,7 +454,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket getirme işleminin yasaklı olduğunu bildirir.",
+                                            name = "Id'ye göre etiket getirme işleminin yasaklı olduğunu bildirir.",
                                             value = "{\"status\": \"403\"," +
                                                     "\"message\": \"Forbidden.\"," +
                                                     "\"path\": \"/api/etiket/getir/{id}\"," +
@@ -468,7 +468,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket getirme işleminde sayfanın bulunmadığını bildirir.",
+                                            name = "Id'ye göre etiket getirme işleminde sayfanın bulunmadığını bildirir.",
                                             value = "{\"status\": \"404\"," +
                                                     "\"message\": \"Not Found.\"," +
                                                     "\"path\": \"/api/etiket/getir/{id}\"," +
@@ -482,7 +482,7 @@ public class EtiketController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = BlogDTO.class),
                                     examples= @ExampleObject(
-                                            name = "İd'ye göre etiket getirme işleminde özel bir durumun oluştuğunu bildirir.",
+                                            name = "Id'ye göre etiket getirme işleminde özel bir durumun oluştuğunu bildirir.",
                                             value = "{\"status\": \"405\"," +
                                                     "\"message\": \"Validation exception.\"," +
                                                     "\"path\": \"/api/etiket/getir/{id}\"," +
