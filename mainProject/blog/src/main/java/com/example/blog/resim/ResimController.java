@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/resim")
 @RestController
 public class ResimController {
-    IResimService iResimService;
+    private final IResimService iResimService;
 
     public ResimController(IResimService iResimService) {
         this.iResimService = iResimService;

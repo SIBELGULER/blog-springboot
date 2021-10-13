@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/etiket")
 @RestController
 public class EtiketController {
-    private IEtiketService etiketService;
+    private final IEtiketService etiketService;
     public EtiketController(IEtiketService etiketService) {
         this.etiketService=etiketService;
     }

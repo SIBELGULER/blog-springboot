@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/kategori")
 @RestController
 public class KategoriController {
-    private IKategoriService kategoriService;
+    private final IKategoriService kategoriService;
 
     public KategoriController(IKategoriService kategoriService) {
         this.kategoriService = kategoriService;

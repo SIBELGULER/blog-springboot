@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/yorum")
 @RestController
 public class YorumController {
-    private IYorumService yorumService;
+    private final IYorumService yorumService;
 
     public YorumController(IYorumService yorumService) {
         this.yorumService = yorumService;

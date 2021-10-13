@@ -25,7 +25,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "blogSequence",allocationSize = 1)
+@SequenceGenerator(initialValue = 1, name = "idGenerator", sequenceName = "blogSequence", allocationSize = 1)
 public class Blog extends BaseEntity {
     @NotNull
     private String baslik;
@@ -33,7 +33,6 @@ public class Blog extends BaseEntity {
     private String icerik;
     @NotNull
     private Calendar tarih;
-
     @OneToMany(mappedBy = "blog")
     private List<Yorum> yorumlar;
 
